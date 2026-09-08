@@ -1,0 +1,6 @@
+{
+  "terminal.integrated.env.windows": {
+    "PATH": "C:\\Program Files\\nodejs;C:\\Users\\Programming.com.DESKTOP-IA4SBDK\\AppData\\Roaming\\npm;${env:PATH}"
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell"
+}

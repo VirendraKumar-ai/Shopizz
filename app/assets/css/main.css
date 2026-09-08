@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@import "@nuxt/ui";
+
+:root {
+  /* ----------------------------------------
+     Core
+  ---------------------------------------- */
+
+  --shopizz-porcelain: #f4f1ea;
+  --shopizz-obsidian: #101010;
+  --shopizz-white: #faf8f3;
+
+  /* ----------------------------------------
+     Surfaces
+  ---------------------------------------- */
+
+  --shopizz-stone: #e9e3d8;
+
+  /* ----------------------------------------
+     Brand
+  ---------------------------------------- */
+
+  --shopizz-moss: #3d5142;
+  --shopizz-moss-dark: #293a30;
+
+  /* ----------------------------------------
+     Accent
+  ---------------------------------------- */
+
+  --shopizz-saffron: #c56a32;
+  --shopizz-saffron-dark: #a9572b;
+
+  /* ----------------------------------------
+     Secondary Accent
+  ---------------------------------------- */
+
+  --shopizz-gold: #b69a63;
+
+  /* ----------------------------------------
+     Text
+  ---------------------------------------- */
+
+  --shopizz-muted: rgba(16, 16, 16, 0.6);
+
+  /* ----------------------------------------
+     Borders
+  ---------------------------------------- */
+
+  --shopizz-border: rgba(16, 16, 16, 0.12);
+}
+
+/* ----------------------------------------
+   Base
+---------------------------------------- */
+
+html {
+  background: var(--shopizz-porcelain);
+  color: var(--shopizz-obsidian);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--shopizz-porcelain);
+  color: var(--shopizz-obsidian);
+}
+
+/* ----------------------------------------
+   Selection
+---------------------------------------- */
+
+::selection {
+  background: var(--shopizz-obsidian);
+  color: var(--shopizz-porcelain);
+}
+
+/* ----------------------------------------
+   Scrollbar
+---------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--shopizz-porcelain);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--shopizz-stone);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--shopizz-moss);
+}
+
+/* ----------------------------------------
+   Images
+---------------------------------------- */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ----------------------------------------
+   Buttons / Links
+---------------------------------------- */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+
+/* ----------------------------------------
+   Page Transitions
+---------------------------------------- */
+
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
