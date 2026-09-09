@@ -1,0 +1,33 @@
+# Node dependencies
+node_modules
+
+# Nuxt generated files
+.nuxt
+.nitro
+.output
+
+# Other build/cache directories
+.cache
+.data
+dist
+
+# Git
+.git
+.github
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE/editor files
+.vscode
+.idea
+.fleet
+
+# Logs
+logs
+*.log
+
+# OS files
+.DS_Store
