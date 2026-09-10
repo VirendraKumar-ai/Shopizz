@@ -58,3 +58,9 @@ jobs:
           push: ${{ github.event_name == 'push' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Redeploy Railway
+        if: github.event_name == 'push'
+        run: npx -y @railway/cli@latest redeploy --service shopizz --yes
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
