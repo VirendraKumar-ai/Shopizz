@@ -138,6 +138,12 @@ function handleDownloadData() {
   a.click()
   URL.revokeObjectURL(url)
 }
+
+function handleDeleteAccount() {
+  if (typeof window !== 'undefined') {
+    window.alert('Account deletion request submitted. Our privacy desk will contact you.')
+  }
+}
 </script>
 
 <template>
@@ -670,7 +676,7 @@ function handleDownloadData() {
             <button
               type="button"
               class="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-red-50 transition-colors text-left"
-              @click="alert('Account deletion request submitted.')"
+              @click="handleDeleteAccount"
             >
               <div class="flex items-center gap-3 text-red-700">
                 <Icon name="ph:trash" class="h-4 w-4 text-red-600" />

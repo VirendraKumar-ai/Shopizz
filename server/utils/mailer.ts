@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer'
+import nodemailer, { type Transporter } from 'nodemailer'
 
 interface MailOptions {
   to: string
@@ -6,7 +6,7 @@ interface MailOptions {
   html: string
 }
 
-let transporter: nodemailer.Transporter | null = null
+let transporter: Transporter | null = null
 
 function getTransporter() {
   if (!transporter) {

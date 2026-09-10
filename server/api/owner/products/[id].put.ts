@@ -87,6 +87,13 @@ export default defineEventHandler(async (event) => {
     .where(and(eq(products.id, productId), eq(products.ownerId, user.id)))
     .returning()
 
+  if (!updatedProduct) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Failed to update product or product not found',
+    })
+  }
+
   // 3. Update images (supports multi-image array with fallback to single imageUrl)
   if (Array.isArray(body.images)) {
     // Delete existing images for this product to replace with updated order/selection

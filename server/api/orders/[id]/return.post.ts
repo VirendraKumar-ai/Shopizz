@@ -132,7 +132,15 @@ export default defineEventHandler(async (event) => {
 
   let selectedItem = null
   let refundAmount = order.totalAmount
-  let ownerId = items[0].ownerId
+  const firstItem = items[0]
+
+  if (!firstItem) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'No items found in this order',
+    })
+  }
+  let ownerId = firstItem.ownerId
 
   if (orderItemId) {
     selectedItem = items.find(i => i.id === orderItemId)

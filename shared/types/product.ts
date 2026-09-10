@@ -55,9 +55,13 @@ export interface Product {
   isFeatured: boolean
   stock: number
   category?: ProductCategory | null
+  ownerId?: string
+  categoryId?: string
   images: ProductImage[]
   owner?: ProductOwner | null
   shop?: ProductShop | null
+  createdAt?: Date
+  updatedAt?: Date
 
   // Dynamic variants & specs
   colors?: ProductColor[]

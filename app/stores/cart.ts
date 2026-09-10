@@ -163,16 +163,18 @@ export const useCartStore = defineStore('cart', () => {
 
     if (existingIndex > -1) {
       const currentItem = items.value[existingIndex]
-      const currentQty = Number(currentItem.quantity) || 0
-      const newQuantity = Math.min(
-        currentQty + safeQty,
-        safeStock
-      )
-      items.value[existingIndex] = {
-        productId,
-        quantity: Math.max(1, newQuantity),
-        product: normalizedProduct,
-        price: safePrice,
+      if (currentItem) {
+        const currentQty = Number(currentItem.quantity) || 0
+        const newQuantity = Math.min(
+          currentQty + safeQty,
+          safeStock
+        )
+        items.value[existingIndex] = {
+          productId,
+          quantity: Math.max(1, newQuantity),
+          product: normalizedProduct,
+          price: safePrice,
+        }
       }
     } else {
       const initialQty = Math.min(safeQty, safeStock)
@@ -197,8 +199,11 @@ export const useCartStore = defineStore('cart', () => {
       return
     }
 
-    const maxStock = Number(items.value[index].product?.stock) || 99
-    items.value[index].quantity = Math.min(Math.round(numQty), maxStock)
+    const targetItem = items.value[index]
+    if (targetItem) {
+      const maxStock = Number(targetItem.product?.stock) || 99
+      targetItem.quantity = Math.min(Math.round(numQty), maxStock)
+    }
   }
 
   const removeItem = (productId: string) => {

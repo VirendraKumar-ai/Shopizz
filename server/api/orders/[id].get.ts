@@ -73,6 +73,12 @@ export default defineEventHandler(async (event) => {
   }
 
   const first = rows[0]
+  if (!first) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Order not found',
+    })
+  }
 
   // Security check: Only buyer, admin, or item owner
   const isBuyerOwner = user.id === first.buyerId

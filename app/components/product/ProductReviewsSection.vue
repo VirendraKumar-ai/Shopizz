@@ -291,7 +291,7 @@ function formatDate(dateStr: string) {
               <tr
                 v-for="(val, key, idx) in specifications"
                 :key="key"
-                :class="idx % 2 === 0 ? 'bg-[#FAF8F5]' : 'bg-white'"
+                :class="(Number(idx) || 0) % 2 === 0 ? 'bg-[#FAF8F5]' : 'bg-white'"
                 class="border-b border-[#E8E2D8]/60 last:border-b-0"
               >
                 <td class="py-2.5 px-4 font-semibold text-[#7A746B] w-2/5">

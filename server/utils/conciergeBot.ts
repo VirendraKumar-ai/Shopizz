@@ -48,9 +48,8 @@ export async function generateAndSaveBotReply(params: BotReplyParams) {
         .orderBy(desc(orders.createdAt))
         .limit(3)
 
-      if (userOrders.length > 0) {
-        // Fetch items for the latest order
-        const latestOrder = userOrders[0]
+      const latestOrder = userOrders[0]
+      if (latestOrder) {
         const items = await db
           .select({
             productName: orderItems.productName,

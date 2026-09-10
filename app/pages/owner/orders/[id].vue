@@ -228,9 +228,9 @@ const formatDate = (dateString: string) => {
             <AppButton
               size="sm"
               :disabled="updatingStatus"
-              @click="handleAdvanceClick(NEXT_ACTIONS[order.status].next)"
+              @click="handleAdvanceClick(NEXT_ACTIONS[order.status]?.next || '')"
             >
-              {{ updatingStatus ? 'Updating...' : NEXT_ACTIONS[order.status].label }}
+              {{ updatingStatus ? 'Updating...' : (NEXT_ACTIONS[order.status]?.label || '') }}
             </AppButton>
           </div>
 
@@ -241,7 +241,7 @@ const formatDate = (dateString: string) => {
 
         <div v-if="NEXT_ACTIONS[order.status]" class="space-y-3 pt-2">
           <p class="text-xs text-[var(--shopizz-obsidian)]/70">
-            <strong>Next Milestone:</strong> {{ NEXT_ACTIONS[order.status].desc }}
+            <strong>Next Milestone:</strong> {{ NEXT_ACTIONS[order.status]?.desc }}
           </p>
 
           <div class="space-y-1">

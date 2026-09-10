@@ -90,6 +90,13 @@ export default defineEventHandler(async (event) => {
     })
     .returning()
 
+  if (!createdProduct) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Failed to create product',
+    })
+  }
+
   // 2. Insert product images (supports multi-image array with fallback to single imageUrl)
   const imagesList: Array<{
     url: string

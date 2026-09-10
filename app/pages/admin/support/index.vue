@@ -47,7 +47,7 @@ const sendingMessage = ref(false)
 const updatingStatus = ref(false)
 const replyText = ref('')
 const searchQuery = ref('')
-const selectedStatusFilter = ref<'ALL' | 'OPEN' | 'IN_PROGRESS' | 'RESOLVED'>('ALL')
+const selectedStatusFilter = ref<string>('ALL')
 const chatContainerRef = ref<HTMLElement | null>(null)
 
 // Polling timer
@@ -235,9 +235,11 @@ const updateStatus = async (newStatus: 'OPEN' | 'IN_PROGRESS' | 'RESOLVED') => {
     )
 
     if (res.success && res.conversation) {
-      selectedConversation.value.status = newStatus
+      if (selectedConversation.value) {
+        selectedConversation.value.status = newStatus
+      }
       const idx = conversations.value.findIndex((c) => c.id === selectedConversation.value?.id)
-      if (idx !== -1) {
+      if (idx !== -1 && conversations.value[idx]) {
         conversations.value[idx].status = newStatus
       }
     }
@@ -265,7 +267,7 @@ onMounted(async () => {
   await fetchConversations()
 
   // Select first conversation by default if available
-  if (conversations.value.length > 0 && !selectedConversation.value) {
+  if (conversations.value.length > 0 && !selectedConversation.value && conversations.value[0]) {
     selectConversation(conversations.value[0])
   }
 

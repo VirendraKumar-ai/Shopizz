@@ -66,14 +66,14 @@ export default defineEventHandler(async (event) => {
     .leftJoin(users, eq(orderItems.ownerId, users.id))
     .where(eq(orders.id, orderId))
 
-  if (rows.length === 0) {
+  const first = rows[0]
+
+  if (!first) {
     throw createError({
       statusCode: 404,
       statusMessage: 'Order not found',
     })
   }
-
-  const first = rows[0]
 
   // Fetch buyer info
   const buyer = await db.query.users.findFirst({

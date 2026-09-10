@@ -35,8 +35,10 @@ const FALLBACK_IMAGES = [
 
 function generateBadge(name: string): string {
   const parts = name.trim().split(/\s+/)
-  if (parts.length >= 2) {
-    return (parts[0][0] + parts[1][0]).toLowerCase()
+  const first = parts[0]
+  const second = parts[1]
+  if (first && second && first[0] && second[0]) {
+    return (first[0] + second[0]).toLowerCase()
   }
   return name.slice(0, 2).toLowerCase()
 }

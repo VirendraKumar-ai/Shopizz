@@ -81,14 +81,14 @@ export default defineEventHandler(async (event) => {
     .leftJoin(ownerApplications, eq(products.ownerId, ownerApplications.userId))
     .where(eq(products.slug, slug))
 
-  if (!rows.length || rows[0].status !== 'ACTIVE') {
+  const first = rows[0]
+
+  if (!first || first.status !== 'ACTIVE') {
     throw createError({
       statusCode: 404,
       statusMessage: 'Product not found',
     })
   }
-
-  const first = rows[0]
 
   // Map & deduplicate gallery images
   const imagesMap = new Map<string, any>()

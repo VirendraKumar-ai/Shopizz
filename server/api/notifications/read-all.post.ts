@@ -1,4 +1,4 @@
-import { eq, or } from 'drizzle-orm'
+import { and, eq, isNull, or } from 'drizzle-orm'
 import { db } from '~~/server/utils/db'
 import { notifications } from '~~/db/schema'
 

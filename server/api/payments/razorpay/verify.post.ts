@@ -186,6 +186,13 @@ export default defineEventHandler(async (event) => {
     })
     .returning()
 
+  if (!createdOrder) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Failed to create order in database',
+    })
+  }
+
   // 4. Insert status history
   await db.insert(orderStatusHistory).values({
     orderId: createdOrder.id,

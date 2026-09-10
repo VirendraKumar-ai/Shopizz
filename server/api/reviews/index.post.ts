@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm'
+import { and, eq } from 'drizzle-orm'
 import { db } from '~~/server/utils/db'
 import { reviews, products, orders, orderItems } from '~~/db/schema'
 import { requireAuth } from '~~/server/utils/auth'
@@ -48,8 +48,7 @@ export default defineEventHandler(async (event) => {
     .select({ id: orderItems.id })
     .from(orderItems)
     .innerJoin(orders, eq(orderItems.orderId, orders.id))
-    .where(eq(orders.buyerId, user.id))
-    .where(eq(orderItems.productId, productId))
+    .where(and(eq(orders.buyerId, user.id), eq(orderItems.productId, productId)))
     .limit(1)
 
   const isVerifiedPurchase = buyerOrders.length > 0

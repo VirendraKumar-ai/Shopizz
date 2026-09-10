@@ -56,6 +56,14 @@ export default defineEventHandler(async (event) => {
 
   const latestReturn = returns[0]
 
+  if (!latestReturn) {
+    return {
+      success: true,
+      returnRequest: null,
+      returns: [],
+    }
+  }
+
   // Authorization check
   if (
     user.id !== latestReturn.buyerId &&

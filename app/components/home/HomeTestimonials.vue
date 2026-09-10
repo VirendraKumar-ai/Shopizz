@@ -84,7 +84,7 @@ onUnmounted(() => {
               :key="activeTestimonialIndex"
               class="font-serif text-xl sm:text-2xl lg:text-[25px] font-normal leading-snug tracking-tight text-[var(--shopizz-obsidian)] max-w-xl"
             >
-              {{ testimonials[activeTestimonialIndex].quote }}
+              {{ testimonials[activeTestimonialIndex]?.quote }}
             </blockquote>
           </transition>
         </div>
@@ -105,10 +105,10 @@ onUnmounted(() => {
             <transition name="fade-slide" mode="out-in">
               <div :key="activeTestimonialIndex">
                 <p class="mt-2.5 text-xs sm:text-[13px] font-semibold text-[var(--shopizz-obsidian)] tracking-tight">
-                  {{ testimonials[activeTestimonialIndex].author }}
+                  {{ testimonials[activeTestimonialIndex]?.author }}
                 </p>
                 <p class="mt-0.5 text-[11px] text-[var(--shopizz-obsidian)]/55">
-                  {{ testimonials[activeTestimonialIndex].purchase }}
+                  {{ testimonials[activeTestimonialIndex]?.purchase }}
                 </p>
               </div>
             </transition>

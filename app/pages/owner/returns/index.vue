@@ -516,7 +516,7 @@ async function handleReject() {
                 target="_blank"
                 class="rounded-lg border border-[var(--shopizz-obsidian)]/20 px-2 py-0.5 text-[10px] font-medium text-[var(--shopizz-obsidian)] hover:bg-[#ede5d8]"
               >
-                Photo {{ idx + 1 }} ↗
+                Photo {{ Number(idx) + 1 }} ↗
               </a>
             </div>
           </div>

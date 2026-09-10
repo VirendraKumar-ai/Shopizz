@@ -246,8 +246,10 @@ const moveImage = (index: number, direction: -1 | 1) => {
 
   const currentItem = images.value[index]
   const targetItem = images.value[targetIndex]
-  images.value[index] = targetItem
-  images.value[targetIndex] = currentItem
+  if (currentItem && targetItem) {
+    images.value[index] = targetItem
+    images.value[targetIndex] = currentItem
+  }
 
   // Re-index sort order
   images.value.forEach((img, idx) => {
@@ -265,7 +267,7 @@ const removeImage = (index: number) => {
   })
 
   // If primary was removed, make first remaining primary
-  if (wasPrimary && images.value.length > 0) {
+  if (wasPrimary && images.value.length > 0 && images.value[0]) {
     images.value[0].isPrimary = true
   }
 }

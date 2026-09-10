@@ -69,7 +69,7 @@ const feedbackError = ref('')
 
 watch(displayOrders, (newOrders) => {
   if (newOrders && newOrders.length > 0) {
-    if (!selectedOrderId.value || !newOrders.some(o => o.id === selectedOrderId.value)) {
+    if (!selectedOrderId.value || !newOrders.some((o: any) => o.id === selectedOrderId.value)) {
       selectedOrderId.value = newOrders[0].id
       selectedItemId.value = newOrders[0].items?.[0]?.id || ''
     }
@@ -77,7 +77,7 @@ watch(displayOrders, (newOrders) => {
 }, { immediate: true })
 
 watch(selectedOrderId, (newId) => {
-  const ord = displayOrders.value.find(o => o.id === newId)
+  const ord = displayOrders.value.find((o: any) => o.id === newId)
   if (ord && ord.items && ord.items.length > 0) {
     selectedItemId.value = ord.items[0].id
   } else {
@@ -96,7 +96,7 @@ const reasons = [
 ]
 
 const selectedOrder = computed(() => {
-  return displayOrders.value.find(o => o.id === selectedOrderId.value) || displayOrders.value[0]
+  return displayOrders.value.find((o: any) => o.id === selectedOrderId.value) || displayOrders.value[0]
 })
 
 function formatCurrency(paise: number) {

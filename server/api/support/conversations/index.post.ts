@@ -48,6 +48,13 @@ export default defineEventHandler(async (event) => {
     })
     .returning()
 
+  if (!conversation) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Failed to create conversation',
+    })
+  }
+
   // 2. Insert initial message
   const senderRole = user.role === 'ADMIN' ? 'ADMIN' : user.role === 'OWNER' ? 'OWNER' : 'BUYER'
   const [initialMessage] = await db
